@@ -1,0 +1,31 @@
+{
+  "doomstalker": {
+    "name": "doomstalker",
+    "cards": [{
+      "card_name": "CARD NAME HERE",
+      "initiative": 0,
+      "upper_text": "CARD UPPER TEXT HERE",
+      "lower_text": "CARD LOWER TEXT HERE",
+      "card_level": 1,
+      "card_taken": "True"
+    }, {}],
+    "hp_track": [8, 9, 11, 12, 14, 15, 17, 18, 20],
+    "perks": {},
+    "xp": 0,
+    "checks": 0,
+    "gold": 0,
+    "items": [{
+      "item_name": "ITEM NAME HERE",
+      "item_text": "ITEM TEXT HERE",
+      "item_cost": 20,
+      "item_part": "HEAD BODY ARM 2ARM LEG or POUCH here"
+    }, {}],
+    "enchancements": [{
+      "e_card_name": "CARD NAME HERE",
+      "e_card_half": "UPPER OR LOWER",
+      "e_specifics": "SPECIFCS HERE"
+    }, {}],
+    "level": 0,
+    "card_limit": 12
+  }
+}
