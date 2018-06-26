@@ -22,6 +22,7 @@ class GH_Class(object):
         self.level = cs['level']
         self.checks=cs['checks']
         self.gold = cs['gold']
+        self.modifier_deck = Modifier_deck()
 
         print ("Gathering cards...")
         for card in cs['cards']:
@@ -108,6 +109,9 @@ class GH_Class(object):
         print ("Your initiative is:", card_choices[card_init-1].initiative)
         for card in card_choices:
             print ("Your card is:", card)
+            card_attack = input("Is this card an attack card? (y/n)")
+            if card_attack == 'y':
+
             card_lost = input("Is this card a lost card? (y/n) ")
             if card_lost == 'y':
                 self.lost_cards.append(card)
@@ -128,11 +132,11 @@ class GH_Class(object):
             self.hp += dam
             print ("You now have {} hp".format(self.hp))
 
-    def add_xp(self, xp):
+    def change_xp(self, xp):
         self.xp += xp
         print ("You now have {} xp".format(self.xp))
 
-    def add_gold(self, gold):
+    def change_gold(self, gold):
         self.gold += gold
         print ("You now have {} gold".format(self.gold))
 
