@@ -1,12 +1,10 @@
 import random
 
 class Modifier_deck(object):
-    def __init__(self):
+    def __init__(self, dist):
         self.deck=[]
-        dist = [0,0,0,0,0,0,1,1,1,1,1,-1,-1,-1,-1,-1,2,-2,-1000,'*2']
-        # dist = range(20)
         for ele in dist:
-            self.deck.append(Modifier_card(ele))
+            self.deck.append(Modifier_card(ele[0], ele[1], ele[2]))
         self.used=[]
 
     def draw(self, base_dam):
@@ -31,8 +29,10 @@ class Modifier_deck(object):
             special_effects.append(card.special)
         if t2==True:
             tot_mod = tot_mod*2
-
         tot_mod += base_dam
+        if tot_mod < 0:
+            tot_mod = 0
+
         print ("You are doing {} damage".format(tot_mod))
         print ("Your attack has {} special effects:".format(len(special_effects)))
         print ('spec effects:', len(special_effects), special_effects)
@@ -82,7 +82,10 @@ class Modifier_deck(object):
 
         tot_mod += base_dam
         tot_mod_2 += base_dam
-
+        if tot_mod < 0:
+            tot_mod = 0
+        elif:
+            tot_mod_2 = 0
         print ('Stack 1 has {} special effects...'.format(len(special_effects)))
         print ('spec effects', special_effects)
         print ("Stack 1 total damage:", tot_mod)
@@ -133,6 +136,10 @@ class Modifier_deck(object):
             tot_mod = tot_mod_2*2
         tot_mod += base_dam
         tot_mod_2 += base_dam
+        if tot_mod < 0:
+            tot_mod = 0
+        elif:
+            tot_mod_2 = 0
 
         print ('Stack 1 has {} special effects...'.format(len(special_effects)))
         print ('spec effects', special_effects)
@@ -149,12 +156,12 @@ class Modifier_card(object):
 
     def __str__(self):
         return "{} card, which has {} effects".format(self.mod,self.special)
-d = Modifier_deck()
 
-print (len(d.deck))
+
+dist = [0,0,0,0,0,0,1,1,1,1,1,-1,-1,-1,-1,-1,2,-2,-1000,'*2']
+
+d = Modifier_deck(dist)
 
 d.draw(1)
 d.draw_advantage(1)
 d.draw_disadvantage(1)
-
-print (len(d.deck), len(d.used))
