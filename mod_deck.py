@@ -1,7 +1,13 @@
 import random
+import json
 
 class Modifier_deck(object):
-    def __init__(self, dist):
+    def __init__(self, dist=False):
+        if dist == False:
+            dist = [ [0, False, None], [0, False, None], [0, False, None], [0, False, None], [0, False, None], [0, False, None],
+                    [1, False, None], [1, False, None], [1, False, None], [1, False, None], [1, False, None],
+                    [-1, False, None], [-1, False, None],[-1, False, None], [-1, False, None], [-1, False, None],
+                    [2, False, None], [-2, False, None], [-1000, False, None], ["*2", False, None]
         self.deck=[]
         for ele in dist:
             self.deck.append(Modifier_card(ele[0], ele[1], ele[2]))
@@ -9,6 +15,7 @@ class Modifier_deck(object):
 
     def draw(self, base_dam):
         random.shuffle(self.deck)
+        reshuffle = False
         results = []
         t2=False
         rolling = True
@@ -33,12 +40,16 @@ class Modifier_deck(object):
         if tot_mod < 0:
             tot_mod = 0
 
+        for card in self.used: if card.mod == -1000 or card.mod == "*2": reshuffle = True
+
         print ("You are doing {} damage".format(tot_mod))
         print ("Your attack has {} special effects:".format(len(special_effects)))
         print ('spec effects:', len(special_effects), special_effects)
+        if reshuffle == True: print ("Your Null or x2 was drawn, your deck needs to be reshuffled")
 
     def draw_advantage(self, base_dam):
         random.shuffle(self.deck)
+        reshuffle = False
         results, results_2 = [], []
         t2=False
         rolling = True
@@ -86,15 +97,19 @@ class Modifier_deck(object):
             tot_mod = 0
         elif:
             tot_mod_2 = 0
+
+        for card in self.used: if card.mod == -1000 or card.mod == "*2": reshuffle = True
         print ('Stack 1 has {} special effects...'.format(len(special_effects)))
         print ('spec effects', special_effects)
         print ("Stack 1 total damage:", tot_mod)
         print ('Stack 2 has {} special effects...'.format(len(special_effects_2)))
         print ('spec effects', special_effects_2)
         print ("Stack 2 total damage:", tot_mod_2)
+        if reshuffle == True: print ("Your Null or x2 was drawn, your deck needs to be reshuffled")
 
     def draw_disadvantage(self, base_dam):
         random.shuffle(self.deck)
+        reshuffle = False
         results, results_2 = [], []
         t2=False
         rolling = True
@@ -141,12 +156,18 @@ class Modifier_deck(object):
         elif:
             tot_mod_2 = 0
 
+        for card in self.used: if card.mod == -1000 or card.mod == "*2": reshuffle = True
         print ('Stack 1 has {} special effects...'.format(len(special_effects)))
         print ('spec effects', special_effects)
         print ("Stack 1 total damage:", tot_mod)
         print ('Stack 2 has {} special effects...'.format(len(special_effects_2)))
         print ('spec effects', special_effects_2)
         print ("Stack 2 total damage:", tot_mod_2)
+        if reshuffle == True: print ("Your Null or x2 was drawn, your deck needs to be reshuffled")
+
+    def reshuffle(self):
+        self.deck += self.used
+        random.shuffle(self.deck)
 
 class Modifier_card(object):
     def __init__(self, mod, rolling=False, special=None):
@@ -155,12 +176,9 @@ class Modifier_card(object):
         self.rolling=False
 
     def __str__(self):
-        return "{} card, which has {} effects".format(self.mod,self.special)
+        return "{} card, which has {} effects and has rolling status {}".format(self.mod,self.special, self.rolling)
 
-
-dist = [0,0,0,0,0,0,1,1,1,1,1,-1,-1,-1,-1,-1,2,-2,-1000,'*2']
-
-d = Modifier_deck(dist)
+d = Modifier_deck()
 
 d.draw(1)
 d.draw_advantage(1)
