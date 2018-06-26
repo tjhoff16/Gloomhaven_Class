@@ -1,17 +1,20 @@
 import math
 import json
+import random
+import * from mod_deck
 
 class GH_Class(object):
     def __init__(self, cs):
-        print ("Gathering class info...")
-        self.items=cs[]
+        print ("Initializing class...")
+        self.items=[]
         self.cards=[]
         self.lost_cards=[]
         self.discards=[]
         self.enchancements=[]
         self.equipped={"HEAD": None,"BODY": None,"LEG": None,"ARM": None,"ARM2": None, "POUCH":[]}
         pouch_items = int(math.ceil(cs['level']/2))
-        
+
+        print ("Gathering class info...")
         self.name = cs['name']
         self.hp = cs['hp_track'][cs['level']-1]
         self.perks=cs['perks']
@@ -20,6 +23,7 @@ class GH_Class(object):
         self.checks=cs['checks']
         self.gold = cs['gold']
 
+        print ("Gathering cards...")
         for card in cs['cards']:
             if card['card_taken'] == "True":
                 self.cards.append(Card(card))
@@ -30,6 +34,7 @@ class GH_Class(object):
             inp = int(input("Type a card's number to discard from your hand"))
             self.cards.pop(inp)
 
+        print ("Gathering items...")
         for item in cs['items']:
             self.items.append(Item(item))
         for i,item in enumerate(self.items):
@@ -50,12 +55,32 @@ class GH_Class(object):
                     self.equipped[item.part][pouch_input] = item
                 elif item.part == "POUCH":
                     self.equipped[item.part].append(item)
+
+        print ("Gathering enchancements...")
         for enhancement in cs['enchancements']:
             self.enchancements.append(Enhancement(enhancement))
+
+        print ("Showing current class state...")
         print ("You are playing a level {} {}. You have {} health, {} gold and {} xp.".format(self.level, self.name, self.gold, self.xp))
         for enhancement in self.enchancements:
             print ("You have the enhancement:", enhancement)
+        for k,v in self.equipped.items():
+            print ("You have {} equipped in your {} slot".format(v, k))
 
+    def current_cards(self):
+        print ("You have the following cards in your hand...")
+        for card in self.cards:
+            print (card)
+
+    def current_discards(self):
+        print ("You have the following discards...")
+        for card in self.discards:
+            print (card)
+
+    def current_lost_cards(self):
+        print ("You have the following discards...")
+        for card in self.lost_cards:
+            print (card)
 
     def long_rest(self):
         print ("Long Resting...")
@@ -74,6 +99,42 @@ class GH_Class(object):
 
     def play_cards(self):
         print ("Playing cards...")
+        for i,card in enumerate(self.cards):
+            print(i, card)
+        card_choice_1 = input("Choose your first card (input a number): ")
+        card_choice_2 = input("Choose your second card (input a number): ")
+        card_choices = [self.cards.pop(card_choice_1), self.cards.pop(card_choice_2)]
+        card_init = input("Which card is your initiative card? (type 1 or 2)")
+        print ("Your initiative is:", card_choices[card_init-1].initiative)
+        for card in card_choices:
+            print ("Your card is:", card)
+            card_lost = input("Is this card a lost card? (y/n) ")
+            if card_lost == 'y':
+                self.lost_cards.append(card)
+
+    def change_hp(self, dam, cards=False):
+        if cards = True:
+            if len(self.cards) > 0:
+                print ("You have the following cards in your hand...")
+                for i,card in enumerate(self.cards):
+                    print (i,card)
+
+            elif len(self.discards) >= 2:
+                random.shuffle(self.discards)
+                self.lost_cards.append(self.discards.pop())
+                self.lost_cards.append(self.discards.pop())
+
+        else:
+            self.hp += dam
+            print ("You now have {} hp".format(self.hp))
+
+    def add_xp(self, xp):
+        self.xp += xp
+        print ("You now have {} xp".format(self.xp))
+
+    def add_gold(self, gold):
+        self.gold += gold
+        print ("You now have {} gold".format(self.gold))
 
 class Enhancement(object):
     def __init__(self, en_json):
@@ -104,47 +165,3 @@ class Item(object):
 
     def __str__(self):
         return "This is a {} with {} effect which costs {} and can be equipped on {}".format(self.name, self.text, self.cost, self.part)
-
-class Deck(object):
-    def __init__(self):  # Don't need any input to create a deck of cards
-        # This working depends on Card class existing above
-        self.cards = []
-        for suit in range(4):
-            for rank in range(1, 14):
-                card = Card(suit, rank)
-                self.cards.append(card)  # appends in a sorted order
-
-    def __str__(self):
-        total = []
-        for card in self.cards:
-            total.append(card.__str__())
-        # shows up in whatever order the cards are in
-        return "\n".join(total)  # returns a multi-line string listing each card
-
-    def pop_card(self, i=-1):
-        return self.cards.pop(i)  # this card is no longer in the deck -- taken off
-
-    def shuffle(self):
-        random.shuffle(self.cards)
-
-    def replace_card(self, card):
-        card_strs = []  # forming an empty list
-        for c in self.cards:  # each card in self.cards (the initial list)
-            card_strs.append(c.__str__())  # appends the string that represents
-            #that card to the empty list
-        if card.__str__() not in card_strs:  # if the string representing this
-        #card is not in the list already
-            self.cards.append(card)  # append it to the list
-
-    def sort_cards(self):
-        self.cards = []
-        for suit in range(4):
-            for rank in range(1, 14):
-                card = Card(suit, rank)
-                self.cards.append(card)
-
-    def deal_hand(self, hand_size):
-        hand_cards = []
-        for i in range(hand_size):
-            hand_cards.append(self.pop_card(i))
-        return hand_cards
