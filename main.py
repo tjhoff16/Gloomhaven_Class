@@ -35,8 +35,8 @@ class GH_Class(object):
         print ("Gathering items...")
         for item in cs['items']:
             self.items.append(Item(item))
-        for i,item in enumerate(self.items):
-            print (i, item)
+        for item in self.items:
+            print (item)
             item_equip = input("Would you like to equip this item? (y/n): ")
             if item_equip == 'y':
                 if self.equipped[item.part] == None:
@@ -179,7 +179,7 @@ class Item(object):
         self.equipped = False
 
     def __str__(self):
-        return "This is a {} with {} effect which costs {} and can be equipped on {}".format(self.name, self.text, self.cost, self.part)
+        return "This is a {} with {} effect which costs {} gold and can be equipped on {}".format(self.name, self.text, self.cost, self.part)
 
 if __name__ == '__main__':
     # command = None
