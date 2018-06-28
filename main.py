@@ -1,16 +1,13 @@
 import math
 import json
 import random
-import * from mod_deck
+from mod_deck import *
+import sys
 
 class GH_Class(object):
     def __init__(self, cs):
         print ("Initializing class...")
-        self.items=[]
-        self.cards=[]
-        self.lost_cards=[]
-        self.discards=[]
-        self.enchancements=[]
+        self.items,self.cards,self.lost_cards,self.discards,self.enchancements=[],[],[],[],[]
         self.equipped={"HEAD": None,"BODY": None,"LEG": None,"ARM": None,"ARM2": None, "POUCH":[]}
         pouch_items = int(math.ceil(cs['level']/2))
 
@@ -22,7 +19,7 @@ class GH_Class(object):
         self.level = cs['level']
         self.checks=cs['checks']
         self.gold = cs['gold']
-        self.modifier_deck = Modifier_deck()
+        self.modifier_deck = Modifier_deck(cs['mod_deck_distribution'])
 
         print ("Gathering cards...")
         for card in cs['cards']:
@@ -62,7 +59,7 @@ class GH_Class(object):
             self.enchancements.append(Enhancement(enhancement))
 
         print ("Showing current class state...")
-        print ("You are playing a level {} {}. You have {} health, {} gold and {} xp.".format(self.level, self.name, self.gold, self.xp))
+        print ("You are playing a level {} {}. You have {} health, {} gold and {} xp.".format(self.level, self.name, self.hp, self.gold, self.xp))
         for enhancement in self.enchancements:
             print ("You have the enhancement:", enhancement)
         for k,v in self.equipped.items():
@@ -102,22 +99,33 @@ class GH_Class(object):
         print ("Playing cards...")
         for i,card in enumerate(self.cards):
             print(i, card)
-        card_choice_1 = input("Choose your first card (input a number): ")
-        card_choice_2 = input("Choose your second card (input a number): ")
+        card_choice_1 = int(input("Choose your first card (input a number): "))
+        card_choice_2 = int(input("Choose your second card (input a number): "))
         card_choices = [self.cards.pop(card_choice_1), self.cards.pop(card_choice_2)]
         card_init = input("Which card is your initiative card? (type 1 or 2)")
         print ("Your initiative is:", card_choices[card_init-1].initiative)
         for card in card_choices:
             print ("Your card is:", card)
-            card_attack = input("Is this card an attack card? (y/n)")
-            if card_attack == 'y':
+            card_attack = input("How many attacks does this card have? (Input number)")
+            attacks = 0
+            while attacks < card_attack:
+                damage = input("What is the base damage of this attack? (input number)")
+                check_adv_disadv = input ("Does this attack have advantage(1) or disadvantage(2)?")
+                if check_adv_disadv == 1:
+                    self.modifier_deck.draw_advantage(damage)
+                elif check_adv_disadv == 2:
+                    self.modifier_deck.draw_disadvantage(damage)
+                else:
+                    self.modifier_deck.draw(damage)
 
+                attacks += 1
+                print ("This was attack number:", attacks)
             card_lost = input("Is this card a lost card? (y/n) ")
             if card_lost == 'y':
                 self.lost_cards.append(card)
 
     def change_hp(self, dam, cards=False):
-        if cards = True:
+        if cards == True:
             if len(self.cards) > 0:
                 print ("You have the following cards in your hand...")
                 for i,card in enumerate(self.cards):
@@ -139,6 +147,9 @@ class GH_Class(object):
     def change_gold(self, gold):
         self.gold += gold
         print ("You now have {} gold".format(self.gold))
+
+    def reshuffle(self):
+        self.modifier_deck.reshuffle()
 
 class Enhancement(object):
     def __init__(self, en_json):
@@ -169,3 +180,62 @@ class Item(object):
 
     def __str__(self):
         return "This is a {} with {} effect which costs {} and can be equipped on {}".format(self.name, self.text, self.cost, self.part)
+
+if __name__ == '__main__':
+    # command = None
+    # command = sys.argv[1]
+    command = "class_cache.json"
+    class_CACHE = None
+    if class_CACHE == None:
+        with open(command, 'r') as cache_file:
+            class_CACHE = json.loads(cache_file.read())
+
+    print ("The following classes are available to choose from...")
+    for clss in class_CACHE['classes'].keys():
+        print (clss)
+    class_choice_inp = input ("Which class would you like? ")
+    current_class= GH_Class(class_CACHE['classes'][class_choice_inp])
+    action = None
+    while action != "done":
+        print ("""
+        What would you like to do:
+        0) play cards
+        1) long rest
+        2) short rest
+        3) change hp
+        4) change xp
+        5) change gold
+        6) reshuffle modifier deck
+        7) see current cards
+        8) see current discards
+        9) see current lost cards
+        """)
+        action = int(input("Your action is: "))
+        print (action, type(action))
+        if action == 0:
+            current_class.play_cards()
+        elif action == 1:
+            current_class.long_rest()
+        elif action == 2:
+            current_class.short_rest()
+        elif action == 3:
+            lose_cards = False
+            dam_amt = input("How much damage/healing are you taking?")
+            losing_cards = input ("Would you like to lose cards instead of taking damage? (y/n)")
+            if losing_cards == 'y':
+                lose_cards = True
+            current_class.change_hp(dam_amt, lose_cards)
+        elif action == 4:
+            xp_input = input ("How much xp are you gaining or losing?")
+            current_class.change_xp(xp_input)
+        elif action == 5:
+            gold_input = input("How much gold are you gaining or losing?")
+            current_class.change_gold(gold_input)
+        elif action == 6:
+            current_class.reshuffle()
+        elif action == 7:
+            current_class.current_cards()
+        elif action == 8:
+            current_class.current_discards()
+        elif action == 9:
+            current_class.current_lost_cards()

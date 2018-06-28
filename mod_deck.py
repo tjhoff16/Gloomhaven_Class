@@ -1,13 +1,15 @@
 import random
 import json
+# import main
+import sys
 
 class Modifier_deck(object):
     def __init__(self, dist=False):
         if dist == False:
-            dist = [ [0, False, None], [0, False, None], [0, False, None], [0, False, None], [0, False, None], [0, False, None],
+            dist = [[0, False, None], [0, False, None], [0, False, None], [0, False, None], [0, False, None], [0, False, None],
                     [1, False, None], [1, False, None], [1, False, None], [1, False, None], [1, False, None],
                     [-1, False, None], [-1, False, None],[-1, False, None], [-1, False, None], [-1, False, None],
-                    [2, False, None], [-2, False, None], [-1000, False, None], ["*2", False, None]
+                    [2, False, None], [-2, False, None], [-1000, False, None], ["*2", False, None]]
         self.deck=[]
         for ele in dist:
             self.deck.append(Modifier_card(ele[0], ele[1], ele[2]))
@@ -40,7 +42,9 @@ class Modifier_deck(object):
         if tot_mod < 0:
             tot_mod = 0
 
-        for card in self.used: if card.mod == -1000 or card.mod == "*2": reshuffle = True
+        for card in self.used:
+            if card.mod == -1000 or card.mod == "*2":
+                reshuffle = True
 
         print ("You are doing {} damage".format(tot_mod))
         print ("Your attack has {} special effects:".format(len(special_effects)))
@@ -95,10 +99,12 @@ class Modifier_deck(object):
         tot_mod_2 += base_dam
         if tot_mod < 0:
             tot_mod = 0
-        elif:
+        elif tot_mod_2 < 0:
             tot_mod_2 = 0
 
-        for card in self.used: if card.mod == -1000 or card.mod == "*2": reshuffle = True
+        for card in self.used:
+             if card.mod == -1000 or card.mod == "*2":
+                  reshuffle = True
         print ('Stack 1 has {} special effects...'.format(len(special_effects)))
         print ('spec effects', special_effects)
         print ("Stack 1 total damage:", tot_mod)
@@ -153,10 +159,12 @@ class Modifier_deck(object):
         tot_mod_2 += base_dam
         if tot_mod < 0:
             tot_mod = 0
-        elif:
+        elif tot_mod_2 < 0:
             tot_mod_2 = 0
 
-        for card in self.used: if card.mod == -1000 or card.mod == "*2": reshuffle = True
+        for card in self.used:
+             if card.mod == -1000 or card.mod == "*2":
+                  reshuffle = True
         print ('Stack 1 has {} special effects...'.format(len(special_effects)))
         print ('spec effects', special_effects)
         print ("Stack 1 total damage:", tot_mod)
@@ -178,8 +186,8 @@ class Modifier_card(object):
     def __str__(self):
         return "{} card, which has {} effects and has rolling status {}".format(self.mod,self.special, self.rolling)
 
-d = Modifier_deck()
-
-d.draw(1)
-d.draw_advantage(1)
-d.draw_disadvantage(1)
+# d = Modifier_deck()
+#
+# d.draw(1)
+# d.draw_advantage(1)
+# d.draw_disadvantage(1)
