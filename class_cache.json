@@ -9,6 +9,201 @@
         "lower_text": "CARD LOWER TEXT HERE",
         "card_level": 1,
         "card_taken": true
+      }, {
+
+        "card_name": "SUMMON WAR HAWK",
+        "initiative": 75,
+        "upper_text": "HEALTH 3  MOVE 3  ATTACK 3  RANGE 1  FLYING  EXP 2  CONTINUOUS",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY  WHEN THIS ENEMY DIES, MOVE TO THE HEX IN WHICH IT DIED  WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD  CONTINUOUS",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+
+        "card_name": "FOOT SNARE",
+        "initiative": 61,
+        "upper_text": "CREATE ONE 2 DAMAGE IMMOBILIZE TRAP IN AN ADJACENT EMPTY HEX",
+        "lower_text": "IMMOBILIZE: TARGET ONE ADJACENT ENEMY  MOVE 3",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+
+        "card_name": "FRIGHTENING CURSE",
+        "initiative": 37,
+        "upper_text": "THE NEXT 3 TIMES A DOOMED ENEMY DIES WITHIN RANGE 2 OF ANOTHER ENEMY, TRANSFER ONE DOOM TO THAT ENEMY INSTEAD OF DISCARDING IT  CONTINUOUS",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. WHEN THIS ENEMY DIES, FORCE ALL ENEMIES ADJACENT TO THE HEX IN WHICH IT DIED TO PERFORM A MOVE 1 ACTION WITH YOU CONTROLLING THE ACTIONS  WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+
+        "card_name": "CRIPPLING NOOSE",
+        "initiative": 57,
+        "upper_text": "CREATE ONE 4 DAMAGE STUN TRAP IN AN ADJACENT EMPTY HEX  GAIN EXP 2 WHEN THE TRAP IS SPRUNG BY AN ENEMY  DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. THIS ENEMY'S ATTACK, MOVE, AND RANGE ARE ALL REDUCED BY 1. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+
+        "card_name": "SOLID BOW",
+        "initiative": 31,
+        "upper_text": "ATTACK 3 RANGE 5",
+        "lower_text": "MOVE 4",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "RACE TO THE GRAVE",
+        "initiative": 9,
+        "upper_text": "ATTACK 5 RANGE 5 EXP 2  DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. THIS ENEMY SUFFERS 2 DAMAGE AT THE START OF EACH OF ITS TURNS. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+
+        "card_name": "A MOMENT'S PEACE",
+        "initiative": 88,
+        "upper_text": "LOOT 1",
+        "lower_text": "MOVE 2 HEAL 2 SELF",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "MULTI-PRONGED ASSAULT",
+        "initiative": 14,
+        "upper_text": "ATTACK 4 RANGE 3 TARGET 2 EXP 2 DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. ALL ALLIES ADD +1 ATTACK TO ALL THEIR ATTACKS TARGETING THIS ENEMY. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "SAP LIFE",
+        "initiative": 14,
+        "upper_text": "RETALIATE 3 RANGE 4 EXP 2 CONTINUES 1 TURN",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. EACH TIME THIS ENEMY SUFFERS DAMAGE, PERFORM A HEAL 2 SELF ACTION",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "DETONATION",
+        "initiative": 54,
+        "upper_text": "CREATE ONE 3 DAMAGE TRAP IN AN ADJACENT EMPTY HEX. ALL ENEMIES ADJACENT TO THIS TRAP SUFFER 2 DAMAGE WHEN THE TRAP IS SPRUNG. GAIN EXP 2 WHEN THE TRAP IS SPRUNGBY AN ENEMY. DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. WHEN THIS ENEMY DIES, ALL ENEMIES ADJACENT TO THE HEX IN WHICH IT DIED SUFFER 3 DAMAGE. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "RAIN OF ARROWS",
+        "initiative": 33,
+        "upper_text": "THE NEXT FOUR TIMES A DOOMED ENEMY DIES, PERFORM AN 'ATTACK 2, RANGE 5,' ACTION.",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. ADD +2 ATTACK TO ALL YOUR ATTACKES TARGETING THIS ENEMY. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "THE HUNT BEGINS",
+        "initiative": 71,
+        "upper_text": "SUMMON VICIOUS JACKAL  HEALTH 5  MOVE 2  ATTACK 1  RANGE 0  RETALIATE 1  WOUND  EXP 2  CONTINUOUS  DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN UPON ANY ONE ENEMY. ALL SUMMONED ALLIES ADD +2 ATTACK TO ALL THEIR ATTACKS TARGETING THIS ENEMY. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "SWIFT TRICKERY",
+        "initiative": 11,
+        "upper_text": "ATTACK 2 RANGE 4  ADD +2 ATTACK AND GAIN EXP 1 IF THE TARGET IS DOOMED",
+        "lower_text": "MOVE 5",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "VITAL CHARGE",
+        "initiative": 78,
+        "upper_text": "SUMMON BATTLE BOAR  HEALTH 7  MOVE 3  ATTACK 1  RANGE 0  EXP 2  CONTINUOUS  DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. WHEN THIS ENEMY DIES, PERFORM A 'HEAL 5 SELF' ACTION. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "FRESH KILL",
+        "initiative": 65,
+        "upper_text": "ATTACK 3  RANGE 4  ADD +2 ATTACK AND GAIN EXP 1 IF THE TARGET IS UNDAMAGED.",
+        "lower_text": "MOVE 3  JUMP",
+        "card_level": 1,
+        "card_taken": "False"
+      }, {
+        "card_name": "EXPOSE",
+        "initiative": 13,
+        "upper_text": "YOU GAIN ADVANTAGE ON ONE ATTACK EACH TURN TARGETING A DOOMED ENEMY. ALL ENEMIES LOSE INVISIBLE AND MAY NO LONGER GAIN INVISIBLE. EXP 2  CONTINUOUS  DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. YOU AND ALL ALLIES GAIN PIERCE 2 ON ALL YOUR ATTACKS TARGETING THIS ENEMY. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 2,
+        "card_taken": "False"
+      }, {
+        "card_name": "RELENTLESS OFFENSIVE",
+        "initiative": 52,
+        "upper_text": "ATTACK 2  RANGE 5  TARGET 2",
+        "lower_text": "ADD +2 ATTACK TO ALL YOUR ATTACKS TARGETING DOOMED ENEMIES THIS ROUND",
+        "card_level": 2,
+        "card_taken": "False"
+      }, {
+        "card_name": "PRESS THE ATTACK",
+        "initiative": 10,
+        "upper_text": "ATTACK 2 RANGE 4 ADD +3 ATTACK AND GAIN EXP 1 IF THE TARGET IS DOOMED",
+        "lower_text": "RETALIATE 2 RANGE 2  CONTINUES FOR 1 TURN",
+        "card_level": 3,
+        "card_taken": "False"
+      }, {
+        "card_name": "DARKENED SKIES",
+        "initiative": 25,
+        "upper_text": "ATTACK 3  TARGET ALL ENEMIES WITHIN RANGE 3. GAIN EXP 1 FOR EACH TWO ENEMIES TARGETED. DISCARD UPON USE.",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. WHEN THIS ENEMY DIES, PERFORM AN ATTACK 2 RANGE 3 TARGET 3 ACTION. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 3,
+        "card_taken": "False"
+      }, {
+        "card_name": "FLIGHT OF FLAME",
+        "initiative": 53,
+        "upper_text": "CREATE ONE 2 DAMAGE WOUND TRAP IN AN ADJACENT EMPTY HEX. WOUND ALL ENEMIES ADJACENT TO THIS TRAP WHEN THIS TRAP IS SPRUNG.",
+        "lower_text": "MOVE 5  JUMP",
+        "card_level": 4,
+        "card_taken": "False"
+      }, {
+        "card_name": "SINGULAR FOCUS",
+        "initiative": 28,
+        "upper_text": "LOOT 2  EXP 2 DISCARD UPON USE",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. YOU AND ALL ALLIES GAIN ADVANTAGE ON ALL YOUR ATTACKS TARGETING THIS ENEMY. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 4,
+        "card_taken": "False"
+      }, {
+        "card_name": "INESCAPABLE FATE",
+        "initiative": 97,
+        "upper_text": "YOU MAY HAVE TWO DOOMS ACTIVE ON THE SAME TARGET. IF A THIRD DOOM IS PLAYED ON THE SAME TARGET, DISCARD ONE OF THE OTHERS, OR IF A THIRD DOOM IS PLAYED ON A DIFFERENT TARGET, DISCARD BOTH OF THE OTHERS. EXP 2  CONTINUOUS  DISCARD UPON USE.",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE NORMAL OR ELITE ENEMY. AT THE START OF YOUR NEXT THREE TURNS, ADVANCE THE MARKER ON THIS CARD. AFTER IT ADVANCES THREE TIMES, KILL THE TARGET AND DISCARD THE CARD. DISCARD THIS IF ANOTHER DOOM IS PLAYED.",
+        "card_level": 5,
+        "card_taken": "False"
+      }, {
+        "card_name": "WILD COMMAND",
+        "initiative": 46,
+        "upper_text": "ONE ADJACENT SUMMONED ALLY PERFORMS MOVE +0 ATTACK +0 WITH YOU CONTROLLING THE ACTIONS.",
+        "lower_text": "MOVE 3 ATTACK 2 TARGET DOOMED ENEMY AT ANY RANGE.",
+        "card_level": 5,
+        "card_taken": "False"
+      }, {
+        "card_name": "CAMOUFLAGE",
+        "initiative": 23,
+        "upper_text": "ATTACK 3 RANGE 5  INVISBLE SELF",
+        "lower_text": "MOVE 3 INVISIBLE SELF",
+        "card_level": 6,
+        "card_taken": "False"
+      }, {
+        "card_name": "NATURE'S HUNGER",
+        "initiative": 82,
+        "upper_text": "SUMMON GIANT TOAD  HEALTH 7 MOVE 1 ATTACK 1 RANGE 0  STUN  EXP 2  CONTINUOUS  DISCARD UPON USE.",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. WHEN THIS ENEMY DIES, YOU AND ALL ALLIES PERFORM A 'HEAL 2, SELF' ACTION. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 6,
+        "card_taken": "False"
+      }, {
+        "card_name": "CRASHING WAVE",
+        "initiative": 22,
+        "upper_text": "MOVE 4 ATTACK 3  TARGET ALL ADJACENT ENEMIES  GAIN EXP 1 FOR EACH ENEMY TARGETED. DISCARD UPON USE.",
+        "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. YOU AND ALL ALLIES GAIN CURSE ON ALL YOUR ATTACKS TARGETING THIS ENEMY. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
+        "card_level": 7,
+        "card_taken": "False"
+      }, {
+        "card_name": "IMPENDING DOOM",
+        "initiative": 47,
+        "upper_text": "ATTACK 4 RANGE 4 KILL THE TARGET AND GAIN EXP 1 IF ITS HIT POINT VALUE IS LESS THAN OR EQUAL TO 2 AFTER THE ATTACK.",
+        "lower_text": "ADD +3 ATTACK TO ALL YOUR ATTACKS TARGETING DOOMED ENEMIES THIS ROUND.",
+        "card_level": 7,
+        "card_taken": "False"
       }],
       "hp_track": [8, 9, 11, 12, 14, 15, 17, 18, 20],
       "perks": {},
