@@ -3,14 +3,6 @@
     "doomstalker": {
       "name": "doomstalker",
       "cards": [{
-        "card_name": "CARD NAME HERE",
-        "initiative": 0,
-        "upper_text": "CARD UPPER TEXT HERE",
-        "lower_text": "CARD LOWER TEXT HERE",
-        "card_level": 1,
-        "card_taken": true
-      }, {
-
         "card_name": "SUMMON WAR HAWK",
         "initiative": 75,
         "upper_text": "HEALTH 3  MOVE 3  ATTACK 3  RANGE 1  FLYING  EXP 2  CONTINUOUS",
