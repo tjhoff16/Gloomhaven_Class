@@ -8,35 +8,35 @@
         "upper_text": "HEALTH 3  MOVE 3  ATTACK 3  RANGE 1  FLYING  EXP 2  CONTINUOUS",
         "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY  WHEN THIS ENEMY DIES, MOVE TO THE HEX IN WHICH IT DIED  WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD  CONTINUOUS",
         "card_level": 1,
-        "card_taken": false
+        "card_taken": true
       }, {
         "card_name": "FOOT SNARE",
         "initiative": 61,
         "upper_text": "CREATE ONE 2 DAMAGE IMMOBILIZE TRAP IN AN ADJACENT EMPTY HEX",
         "lower_text": "IMMOBILIZE: TARGET ONE ADJACENT ENEMY  MOVE 3",
         "card_level": 1,
-        "card_taken": false
+        "card_taken": true
       }, {
         "card_name": "FRIGHTENING CURSE",
         "initiative": 37,
         "upper_text": "THE NEXT 3 TIMES A DOOMED ENEMY DIES WITHIN RANGE 2 OF ANOTHER ENEMY, TRANSFER ONE DOOM TO THAT ENEMY INSTEAD OF DISCARDING IT  CONTINUOUS",
         "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. WHEN THIS ENEMY DIES, FORCE ALL ENEMIES ADJACENT TO THE HEX IN WHICH IT DIED TO PERFORM A MOVE 1 ACTION WITH YOU CONTROLLING THE ACTIONS  WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD",
         "card_level": 1,
-        "card_taken": false
+        "card_taken": true
       }, {
         "card_name": "CRIPPLING NOOSE",
         "initiative": 57,
         "upper_text": "CREATE ONE 4 DAMAGE STUN TRAP IN AN ADJACENT EMPTY HEX  GAIN EXP 2 WHEN THE TRAP IS SPRUNG BY AN ENEMY  DISCARD UPON USE",
         "lower_text": "DOOM: PLACE YOUR CHARACTER TOKEN ON ANY ONE ENEMY. THIS ENEMY'S ATTACK, MOVE, AND RANGE ARE ALL REDUCED BY 1. WHEN THIS ENEMY DIES OR ANOTHER DOOM IS PLAYED, DISCARD THIS CARD.",
         "card_level": 1,
-        "card_taken": false
+        "card_taken": true
       }, {
         "card_name": "SOLID BOW",
         "initiative": 31,
         "upper_text": "ATTACK 3 RANGE 5",
         "lower_text": "MOVE 4",
         "card_level": 1,
-        "card_taken": false
+        "card_taken": true
       }, {
         "card_name": "RACE TO THE GRAVE",
         "initiative": 9,

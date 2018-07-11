@@ -23,7 +23,7 @@ class GH_Class(object):
 
         print ("Gathering cards...")
         for card in cs['cards']:
-            if card['card_taken'] == "True":
+            if card['card_taken'] == True:
                 self.cards.append(Card(card))
         while len(self.cards) > cs['card_limit']:
             print ("You have {} cards".format(len(self.cards)), "choose a card to discard from your starting hand")
@@ -58,17 +58,19 @@ class GH_Class(object):
         for enhancement in cs['enchancements']:
             self.enchancements.append(Enhancement(enhancement))
 
-        print ("Showing current class state...")
+        print ("Showing current class state...\n\n")
         print ("You are playing a level {} {}. You have {} health, {} gold and {} xp.".format(self.level, self.name, self.hp, self.gold, self.xp))
         for enhancement in self.enchancements:
             print ("You have the enhancement:", enhancement)
         for k,v in self.equipped.items():
-            print ("You have {} equipped in your {} slot".format(v, k))
+            if len(k) != 0:
+                print ("You have {} equipped in your {} slot".format(v, k))
 
     def current_cards(self):
-        print ("You have the following cards in your hand...")
-        for card in self.cards:
+        print ("You have the following cards in your hand...\n\n")
+        for i,card in enumerate(self.cards):
             print (card)
+            print ("\n")
 
     def current_discards(self):
         print ("You have the following discards...")
@@ -97,8 +99,7 @@ class GH_Class(object):
 
     def play_cards(self):
         print ("Playing cards...")
-        for i,card in enumerate(self.cards):
-            print(i, card)
+        current_cards()
         card_choice_1 = int(input("Choose your first card (input a number): "))
         card_choice_2 = int(input("Choose your second card (input a number): "))
         card_choices = [self.cards.pop(card_choice_1), self.cards.pop(card_choice_2)]
@@ -168,7 +169,7 @@ class Card(object):
         self.lower=card_json['lower_text']
 
     def __str__(self):
-        return "{} with upper half: {}, lower half {}, and initiative {}".format(self.name, self.upper, self.lower, self.initiative)
+        return "{} with upper half: {},\n\nlower half {},\n\nand initiative {}".format(self.name, self.upper, self.lower, self.initiative)
 
 class Item(object):
     def __init__(self, item_json):
