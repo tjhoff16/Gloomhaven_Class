@@ -32,27 +32,27 @@ class GH_Class(object):
             inp = int(input("Type a card's number to discard from your hand"))
             self.cards.pop(inp)
 
-        print ("Gathering items...")
-        for item in cs['items']:
-            self.items.append(Item(item))
-        for item in self.items:
-            print (item)
-            item_equip = input("Would you like to equip this item? (y/n): ")
-            if item_equip == 'y':
-                if self.equipped[item.part] == None:
-                    self.equipped[item.part] = item
-                elif item.part != "POUCH":
-                    print ("This slot has the already equipped item:", self.equipped[item.part])
-                    part_input = input("Are you sure you would like to replace this item? (y/n)")
-                    if part_input == 'y':
-                        self.equipped[item.part] = item
-                elif item.part == "POUCH" and len(self.equipped[item.part]) >= pouch_items:
-                    for i,item in enumerate(self.equipped[item.part]):
-                        print (i, item)
-                    pouch_input = int(input("Which pouch item would you like to replace? (type a number): "))
-                    self.equipped[item.part][pouch_input] = item
-                elif item.part == "POUCH":
-                    self.equipped[item.part].append(item)
+        # print ("Gathering items...")
+        # for item in cs['items']:
+        #     self.items.append(Item(item))
+        # for item in self.items:
+        #     print (item)
+        #     item_equip = input("Would you like to equip this item? (y/n): ")
+        #     if item_equip == 'y':
+        #         if self.equipped[item.part] == None:
+        #             self.equipped[item.part] = item
+        #         elif item.part != "POUCH":
+        #             print ("This slot has the already equipped item:", self.equipped[item.part])
+        #             part_input = input("Are you sure you would like to replace this item? (y/n)")
+        #             if part_input == 'y':
+        #                 self.equipped[item.part] = item
+        #         elif item.part == "POUCH" and len(self.equipped[item.part]) >= pouch_items:
+        #             for i,item in enumerate(self.equipped[item.part]):
+        #                 print (i, item)
+        #             pouch_input = int(input("Which pouch item would you like to replace? (type a number): "))
+        #             self.equipped[item.part][pouch_input] = item
+        #         elif item.part == "POUCH":
+        #             self.equipped[item.part].append(item)
 
         print ("Gathering enchancements...")
         for enhancement in cs['enchancements']:
@@ -63,7 +63,7 @@ class GH_Class(object):
         for enhancement in self.enchancements:
             print ("You have the enhancement:", enhancement)
         for k,v in self.equipped.items():
-            if len(k) != 0:
+            if len(k) < 2:
                 print ("You have {} equipped in your {} slot".format(v, k))
 
     def current_cards(self):
@@ -99,19 +99,19 @@ class GH_Class(object):
 
     def play_cards(self):
         print ("Playing cards...")
-        current_cards()
+        self.current_cards()
         card_choice_1 = int(input("Choose your first card (input a number): "))
         card_choice_2 = int(input("Choose your second card (input a number): "))
         card_choices = [self.cards.pop(card_choice_1), self.cards.pop(card_choice_2)]
-        card_init = input("Which card is your initiative card? (type 1 or 2)")
+        card_init = int(input("Which card is your initiative card? (type 1 or 2)"))
         print ("Your initiative is:", card_choices[card_init-1].initiative)
         for card in card_choices:
             print ("Your card is:", card)
-            card_attack = input("How many attacks does this card have? (Input number)")
+            card_attack = int(input("How many attacks does this card have? (Input number)"))
             attacks = 0
             while attacks < card_attack:
-                damage = input("What is the base damage of this attack? (input number)")
-                check_adv_disadv = input ("Does this attack have advantage(1) or disadvantage(2)?")
+                damage = int(input("What is the base damage of this attack? (input number)"))
+                check_adv_disadv = int(input ("Does this attack have advantage(1) or disadvantage(2)?"))
                 if check_adv_disadv == 1:
                     self.modifier_deck.draw_advantage(damage)
                 elif check_adv_disadv == 2:
@@ -136,7 +136,6 @@ class GH_Class(object):
                 random.shuffle(self.discards)
                 self.lost_cards.append(self.discards.pop())
                 self.lost_cards.append(self.discards.pop())
-
         else:
             self.hp += dam
             print ("You now have {} hp".format(self.hp))
@@ -169,7 +168,7 @@ class Card(object):
         self.lower=card_json['lower_text']
 
     def __str__(self):
-        return "{} with upper half: {},\n\nlower half {},\n\nand initiative {}".format(self.name, self.upper, self.lower, self.initiative)
+        return "{} with upper half:\n\n{},\n\nlower half\n\n{},\n\nand initiative {}".format(self.name, self.upper, self.lower, self.initiative)
 
 class Item(object):
     def __init__(self, item_json):
@@ -181,6 +180,19 @@ class Item(object):
 
     def __str__(self):
         return "This is a {} with {} effect which costs {} gold and can be equipped on {}".format(self.name, self.text, self.cost, self.part)
+
+def set_in_cache(CACHE, gh_class):
+    cached_class = CACHE['classes'][gh_class]
+    if gh_class.xp < cached_class['xp']:
+    cached_class['xp'] = gh_class.xp
+    cached_class['level'] = gh_class.level
+    cached_class['checks'] = gh_class.checks
+    cached_class['gold'] = gh_class.gold
+    cached_class['perks'] = gh_class.perks
+
+
+    with open(command, 'w') as cache_file:
+
 
 if __name__ == '__main__':
     # command = None
@@ -197,22 +209,13 @@ if __name__ == '__main__':
     class_choice_inp = input ("Which class would you like? ")
     current_class= GH_Class(class_CACHE['classes'][class_choice_inp])
     action = None
+    actions = ["play cards", "long rest", "short rest", "change hp", "change xp", "change gold", "reshuffle modifier deck", "see current cards", "see current discards", "see current lost cards"]
     while action != "done":
-        print ("""
-        What would you like to do:
-        0) play cards
-        1) long rest
-        2) short rest
-        3) change hp
-        4) change xp
-        5) change gold
-        6) reshuffle modifier deck
-        7) see current cards
-        8) see current discards
-        9) see current lost cards
-        """)
+        print ("What would you like to do:")
+        for i,action in enumerate(actions):
+            print (i,action)
         action = int(input("Your action is: "))
-        print (action, type(action))
+        print (actions[i])
         if action == 0:
             current_class.play_cards()
         elif action == 1:
@@ -240,3 +243,9 @@ if __name__ == '__main__':
             current_class.current_discards()
         elif action == 9:
             current_class.current_lost_cards()
+        # elif action == "done":
+        #     done_input = ("Are you sure you want to quit? (y/n)")
+        #     if done_input == 'y':
+        #
+        #     else:
+        #         action=None
