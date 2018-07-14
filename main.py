@@ -181,14 +181,14 @@ class Item(object):
     def __str__(self):
         return "This is a {} with {} effect which costs {} gold and can be equipped on {}".format(self.name, self.text, self.cost, self.part)
 
-def set_in_cache(CACHE, gh_class):
-    cached_class = CACHE['classes'][gh_class]
-    # if gh_class.xp < cached_class['xp']:
-    cached_class['xp'] = gh_class.xp
-    cached_class['level'] = gh_class.level
-    cached_class['checks'] = gh_class.checks
-    cached_class['gold'] = gh_class.gold
-    cached_class['perks'] = gh_class.perks
+# def set_in_cache(CACHE, gh_class):
+#     cached_class = CACHE['classes'][gh_class]
+#     # if gh_class.xp < cached_class['xp']:
+#     cached_class['xp'] = gh_class.xp
+#     cached_class['level'] = gh_class.level
+#     cached_class['checks'] = gh_class.checks
+#     cached_class['gold'] = gh_class.gold
+#     cached_class['perks'] = gh_class.perks
 
     # with open(command, 'w') as cache_file:
 
