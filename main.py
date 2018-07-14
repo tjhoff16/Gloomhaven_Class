@@ -190,7 +190,7 @@ def set_in_cache(CACHE, gh_class):
     cached_class['gold'] = gh_class.gold
     cached_class['perks'] = gh_class.perks
 
-    with open(command, 'w') as cache_file:
+    # with open(command, 'w') as cache_file:
 
 
 
